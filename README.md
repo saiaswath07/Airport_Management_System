@@ -40,7 +40,8 @@ pip install cx_oracle
 pip install django
 
 step 3:Download sql developer to access backend to create tables and perform operations.
-Link to download sql developer :https://www.oracle.com/database/sqldeveloper/technologies/download/
+link to download oracle 11g:https://www.oracle.com/database/sqldeveloper/technologies/download/
+
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Sql tables :
