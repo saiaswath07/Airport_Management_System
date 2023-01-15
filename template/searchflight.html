@@ -1,0 +1,172 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        <title>Flight search</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="myjs.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+                <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Poppins">
+                {% load static %}
+        <link rel="stylesheet" href="{% static 'mycss.css' %}">
+    </head>
+    <body>
+       
+    
+
+                <nav class="navbar navbar-inverse" style="border-radius:0px !important; margin:0;border: 0">
+                    <div class="container-fluid">
+                        <div href="index.html" style="text-align: center;color: white">
+                          <h2>KIA-Managem   ent System</h2>
+                        </div>
+                    </div>
+                </nav>
+                
+
+                {% load static %}
+
+                <div class="background-wrapper" style="background-image: url(images/airline/cc.jpg);">
+
+
+                <div class="container-fluid">   
+                <header>
+                    <h2>Available Flights</h2>
+                    <hr>
+                </header>
+                
+                <!--div class="col-sm-12 col-sm-offset-0"-->
+                    <div class="panel-group">
+                        <div class="panel panel-default panel-transparent">
+                            <div class="panel-heading">
+                                <legend style="text-align: center;color: black">Flight Details</legend>
+                            </div>
+
+                            <div class="panel-body">
+                                <table class="table table-hover" style="color: rgb(114, 194, 223); font-size: 20px">
+                                    <thead>
+                                        <tr>
+                                              
+                                            <th>Flight no</th>
+                                            <th>Flight name</th>
+                                            <th>From</th>
+                                            <th>To</th>
+                                            <th>Arival</th>
+                                            <th>Departure</th>
+                                            <th>Available seats</th>
+                                            <th>Price</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for i in ser %}
+                                        <tr>
+                                            <td>{{i.0}}</td>
+                                            <td>{{i.1}}</td>
+                                            <td>{{i.2}}</td>
+                                            <td>{{i.3}}</td>
+                                            <td>{{i.4}}</td>
+                                            <td>{{i.5}}</td>
+                                            <td>{{i.6}}</td>
+                                            <td>{{i.7}}/-</td>
+                                            <!--td><button id="submit" href="http://localhost:8000/searchflight" class="bookbutton" type="submit" style="width: 30%"><a href="http://localhost:8000/searchflight" style="color: white">BOOK</a></button></td-->
+                                            <td><button class="btn btn-block form-control" type="submit" style="background-color: rgb(35, 153, 237); color: rgb(133, 180, 183)"><a href="http://localhost:8000/passenger"><b>BOOK NOW</b></a></button--></td>
+                                        </tr>
+                                        {% endfor %}
+                                       
+                                    </tbody>
+                              </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+
+
+
+                
+
+                            <!--div class="panel-body">
+                                <table class="table table-hover"  style="color: black; font-size: 20px">
+                                    <thead>
+                                        <tr>
+                                            <th>Passengers</th>
+                                            <th>Flight#</th>
+                                            <th>From</th>
+                                            <th>To</th>
+                                            <th>Date</th>
+                                            <th>Time</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Ali</td>
+                                            <td>4091</td>
+                                            <td>Lahore</td>
+                                            <td>Karachi</td>
+                                            <td>September, 15</td>
+                                            <td>04:30 pm</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Ali</td>
+                                            <td>4091</td>
+                                            <td>Lahore</td>
+                                            <td>Karachi</td>
+                                            <td>September, 15</td>
+                                            <td>04:30 pm</td>
+                                        </tr>
+                                    </tbody>
+                              </table>
+                            </div-->
+                        <!--/div-->
+                    <!--/div-->
+                <!--/div-->
+                <!--br-->
+                <!--dir class="col-sm-12 col-sm-offset-0">
+                    <div class=" trans-input-area well" style=" width: 100%; padding: 1rem  ;text-align:center;"><h2>Total Cost:2,00,000 Rs.</h2></div>
+
+                <br>
+                <br>
+                </dir-->
+                
+
+                <!--div class="col-sm-12 col-sm-offset-0">
+                <button class="btn btn-primary btn-block trans-input-area" href="payement.html" type="submit"  style="height: 7rem; ;text-align: center;"  ><a href="payement.html" style="color:white"><h4>Proceed to Payment</h4></a></button>
+                </div-->
+            <!--br-->
+            <!--br-->
+            <!--/div-->
+
+            <!--br-->
+            <!--br-->
+        <!--/div-->
+
+            <!-- Footer -->
+            <footer id="footer">
+                <div class="container-fluid">
+                    <ul class="icons">
+                        <li><a href="#" class="fa fa-twitter" style="color: grey"></a></li>
+                        <li><a href="#" class="fa fa-facebook" style="color: grey"></a></li>
+                        <li><a href="#" class="fa fa-instagram" style="color: grey"></a></li>
+                        <li><a href="#" class="fa fa-envelope" style="color: grey"></a></li>
+                    </ul>
+                </div>
+                <div class="copyright">
+                    &copy; KIA-Management System. All rights reserved.
+                </div>
+            </footer>
+
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+

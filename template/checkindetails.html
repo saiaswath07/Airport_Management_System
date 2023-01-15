@@ -1,0 +1,248 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        <title>checkin details </title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        {% load static %}
+		<script src="{% static 'myjs.js' %}"></script>   
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+                <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Poppins">
+
+        
+                {% load static %}
+                <link rel="stylesheet" href="{% static 'mycss.css' %}"> 
+                {% load static %}
+                <link rel="stylesheet" href="{% static 'seat.css' %}"> 
+    </head>
+    <body>
+                <nav class="navbar navbar-inverse" style="border-radius:0px !important; margin:0;border: 0">
+                    <div class="container-fluid">
+                        <div href="index.html" style="text-align: center;color: white">
+                          <h2>KIA-Management System</h2>
+                        </div>
+                    </div>
+                </nav>
+
+
+
+                {% load static %}
+                <div class="background-wrapper" style="background-image: url({% static 'ai.jpg' %});">
+
+
+
+                <div class="container-fluid">
+                <header>
+                    <h2>Check-in</h2>
+                    <hr>
+                </header>
+                <div class="col-sm-12 col-sm-offset-0">
+                    <div class="panel-group">
+                        <div class="panel panel-default panel-transparent">
+                            <div class="panel-heading">
+                                <legend style="text-align: center;color: black">Passenger Information</legend>
+                            </div>
+
+                            <div class="panel-body">
+                                <table class="table table-hover" style="color: black; font-size: 20px">
+                                    <thead>
+                                        <tr>
+                                            <th>Passenger Name</th>
+                                            <th>Flight</th>
+                                            <th>From</th>
+                                            <th>To</th> 
+                                            <th>Date &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspTime</th>
+                                            <th>Seat no</th>
+
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+
+                                            <td>{{ flypnr.1 }}</td>
+                                            <td>{{ flypnr.2}}</td>
+                                            <td>{{ flypnr.3}}</td>
+                                            <td>{{ flypnr.4}}</td>
+                                            <td>{{ flypnr.5 }}</td>
+
+                                            <td>
+                                                
+                                                
+                                <form class="form-inline" method="post" action="http://localhost:8000/seatcheck">
+                                    {% csrf_token %}
+                                    {% load static %}
+                                    
+                                                <div class="input-group">
+                                    
+
+  											<select id="seat" class="form-control trans-input-area" name="seat">
+                                                {% for s in seatno %}
+
+  										
+                                        <option value="{{ s }}">{{ s }}</option>
+                                        {% endfor %}
+
+
+  											</select>
+
+  										</div>
+                                          
+                                          <input type="text" hidden value="{{ flypnr.0 }}" name="sepnr" >
+
+                                        
+                                          <button class="btn btn-primary btn-block trans-input-area" style="height:7rem;width:20rem;float: right;"  type="submit">Check-in</button>
+ 
+                                </form>
+
+                    </td>
+                                        </tr>
+                                        <!--tr>
+                                            <td>Ali</td>
+                                            <td>4091</td>
+                                            <td>Lahore</td>
+                                            <td>Karachi</td>
+                                            <td>September, 15</td>
+                                            <td>04:30 pm</td>
+                                        </tr-->
+                                    </tbody>
+                              </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+
+
+
+                <div class="col-sm-12 col-sm-offset-0">
+                    <div class="panel-group">
+                        <div class="panel panel-default panel-transparent">
+                            <!--div class="panel-heading">
+                                <legend style="text-align: center; color: black">Return Information</legend>
+                            </div-->
+
+                            <!--div class="panel-body">
+                                <table class="table table-hover"  style="color: black; font-size: 20px">
+                                    <thead>
+                                        <tr>
+                                            <th>Passengers</th>
+                                            <th>Flight#</th>
+                                            <th>From</th>
+                                            <th>To</th>
+                                            <th>Date</th>
+                                            <th>Time</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Ali</td>
+                                            <td>4091</td>
+                                            <td>Lahore</td>
+                                            <td>Karachi</td>
+                                            <td>September, 15</td>
+                                            <td>04:30 pm</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Ali</td>
+                                            <td>4091</td>
+                                            <td>Lahore</td>
+                                            <td>Karachi</td>
+                                            <td>September, 15</td>
+                                            <td>04:30 pm</td>
+                                        </tr>
+                                    </tbody>
+                              </table>
+                            </div-->
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <dir class="col-sm-12 col-sm-offset-0">
+                    <!--div class=" trans-input-area well" style=" width: 100%; padding: 1rem  ;text-align:center;"><h2>Total Cost:2,00,000 Rs.</h2></div-->
+
+                </dir>
+
+                <br>
+                <br>
+               
+                <button type="button"  data-toggle="modal" data-target="#exampleModal"
+                 class="btn btn-primary btn-block trans-input-area"data-toggle="modal"
+                 data-target="#exampleModal"
+                  style="height:7rem;width:20rem ;text-align:center;"><h4>Select Seat no</h4>
+                </button>
+     
+
+               
+                
+                <!--button type="button"
+                        class="btn btn-primary"
+                        data-toggle="modal"
+                        data-target="#exampleModal" style="height: 7rem; ;text-align: center;"    >
+                        Show image
+                    </button-->
+
+                    <!-- Modal -->
+                    <div class="modal fade"
+                        id="exampleModal"
+                        tabindex="-1"
+                        role="dialog"
+                        aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+
+                                <!-- Add image inside the body of modal -->
+                                <div class="modal-body">
+                                    {% load static %}
+                                    <img class="imagesize"  id="image" src="{% static 'seat.jpg' %}"
+
+                                        alt="Click on button" />
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button"
+                                        class="btn btn-secondary"
+                                        data-dismiss="modal">
+                                        Close
+                                </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                <!--div class="col-sm-12 col-sm-offset-0">
+                <button class="btn btn-primary btn-block trans-input-area" href="payement.html" type="submit"  style="height: 7rem; ;text-align: center;"  ><a href="payement.html" style="color:white"><h4>Select Seat no</h4></a></button>
+              </div-->
+            <br>
+            <br>
+            </div>
+
+            <br>
+            <br>
+        </div>
+
+            <!-- Footer -->
+            <footer id="footer">
+                <div class="container-fluid">
+                    <ul class="icons">
+                        <li><a href="#" class="fa fa-twitter" style="color: grey"></a></li>
+                        <li><a href="#" class="fa fa-facebook" style="color: grey"></a></li>
+                        <li><a href="#" class="fa fa-instagram" style="color: grey"></a></li>
+                        <li><a href="#" class="fa fa-envelope" style="color: grey"></a></li>
+                    </ul>
+                </div>
+                <div class="copyright">
+                    &copy; KIA-Management System. All rights reserved.
+                </div>
+            </footer>
+
+    </body>
+</html>

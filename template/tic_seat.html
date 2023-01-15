@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Airline ticket</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'tic.css' %}">
+  <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700,900&display=swap" rel="stylesheet">
+
+  {% load static %}
+<link rel="stylesheet" href="{% static 'payment.css' %}">
+</head>
+<body>
+<!-- partial:index.partial.html -->
+
+<div class="container">
+  
+  <div class="ticket basic"><i class="fa fa-barcode" aria-hidden="true"> </i>
+    <div class="text">
+      <p>Passenger Name</p>
+      <h1>{{ t.1 }}</h1>
+      <p>PNR No</p>
+      <h1>{{ t.0 }}</h1>
+      <p>Class</p>
+      <h1>Economy</h1>
+      <div class="seat">
+        <p>Seat</p>
+        <h1>{{ t.6 }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h1>
+      </div>
+      
+      <div class="flight">
+        <p>Flight</p>
+        <h1>{{ t.2 }}</h1>
+      </div>
+      
+    </div>
+    
+  </div>
+  
+  <div class="ticket airline">
+    
+    <h1 class="boardingPass-airline">&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;KIA-Management System Boarding Pass</h1>
+    <hr>
+    <div class="item1">
+      <div class="from">
+        <p>from</p>
+        <h1>{{ t.3 }}</h1>
+      </div><i class="fa fa-plane"></i>
+      <div class="to">
+        <p>to</p>
+        <h1>{{ t.4 }}</h1>
+      </div>
+    </div>
+    <div class="item2">
+      <div class="gate">
+        <p>Gate</p>
+        <h1>B3</h1>
+      </div>
+      <div class="time">
+        <p>Boarding Date  &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       Time</p>
+        <h1>{{ t.5 }}</h1>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- partial -->
+
+
+<div class="text-center">
+  <button type="button" style="float: right;" class="button"  onclick="window.location.href = 'http://localhost:8000/login/' ;">Go to Home</button>
+
+</div>
+
+  
+</body>
+</html>

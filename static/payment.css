@@ -1,0 +1,16 @@
+.button {
+    position: relative;
+    top:80%;
+
+    background-color:#2D6BDE ;
+    color: #fff;
+    border:none;
+    border-radius:10px;
+    padding:10px;
+    min-height:30px;
+    min-width: 120px;
+  }
+  .text-center {
+    display: inline-block;
+    text-align: center;
+  };

@@ -1,0 +1,491 @@
+{% csrf_token %}
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Bangalore Airport Management System</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		{% load static %}
+		<script src="{% static 'myjs.js' %}"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+		<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Poppins">
+		{% load static %}
+		<link rel="stylesheet" href="{% static 'mycss.css' %}">
+		{% load static %}
+		<link rel="stylesheet" href="{% static 'popup.css' %}">
+
+<!--passenger popup login-->
+
+
+		{% if openlogin %}
+		<script type="text/javascript">
+			window.onload = function () {
+				OpenBootstrapPopup();
+			};
+			function OpenBootstrapPopup() {
+				$("#myModal").modal('show');
+			}
+		</script>
+        {% endif %}
+
+
+
+
+<!--staff popup login-->
+
+		{% if stafflogin %}
+		<script type="text/javascript">
+			window.onload = function () {
+				OpenBootstrapPopup();
+			};
+			function OpenBootstrapPopup() {
+				$("#myModals").modal('show');
+			}
+		</script>
+        {% endif %}
+
+
+
+
+	<!--security popup login-->	
+
+
+	{% if seclogin %}
+		<script type="text/javascript">
+			window.onload = function () {
+				OpenBootstrapPopup();
+			};
+			function OpenBootstrapPopup() {
+				$("#myModalss").modal('show');
+			}
+		</script>
+        {% endif %}
+
+		
+<style type="text/css">
+	#overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 80%;
+	height: 70%;
+	background-color: #000;
+	filter:alpha(opacity=70);
+	-moz-opacity:0.7;
+	-khtml-opacity: 0.7;
+	opacity: 0.7;
+	z-index: 100;
+	display: none;
+	}
+	.cnt223 a{
+	text-decoration: none;
+	}
+	.popup{
+	width: 100%;
+	margin: 0 auto;
+	display: none;
+	position: fixed;
+	z-index: 101;
+	}
+	.cnt223{
+	min-width: 600px;
+	width: 600px;
+	min-height: 150px;
+	margin: 90px auto;
+	background: #f3f3f3;
+	position: relative;
+	z-index: 13;
+	padding: 15px 20px;
+	border-radius: 5px;
+	box-shadow: 0 2px 5px #000;
+	}
+	.cnt223 p{
+	clear: both;
+		color: #555555;
+		/* text-align: justify; */
+		font-size: 20px;
+		font-family: sans-serif;
+	}
+	.cnt223 p a{
+	color: #ef4a09;
+	font-weight: bold;
+	}
+	.cnt223 .x{
+	float: right;
+	height: 35px;
+	left: 22px;
+	position: relative;
+	top: -25px;
+	width: 34px;
+	}
+	.cnt223 .x:hover{
+	cursor: pointer;
+	}
+	</style>
+
+
+
+<script type='text/javascript'>
+	$(function(){
+	var overlay = $('<div id="overlay"></div>');
+	overlay.show();
+	overlay.appendTo(document.body);
+	$('.popup').show();
+	$('.close').click(function(){
+	$('.popup').hide();
+	overlay.appendTo(document.body).remove();
+	return false;
+	});
+	$('.x').click(function(){
+	$('.popup').hide();
+	overlay.appendTo(document.body).remove();
+	return false;
+	});
+	});
+	</script>
+
+
+
+
+
+
+
+
+	</head>
+
+	<body>
+		
+		{% if bkmsg %}
+		
+		<div class='popup'>
+			<div class='cnt223'>
+			<h1>{{ bkmsg }}	</h1>
+			<p>
+			<br/>
+			<br/>
+			<a href='' class='close'>Close</a>
+			</p>
+			</div>
+			</div>
+			
+										
+
+		{% endif %}
+		
+		
+	
+				<nav  style="border-radius:0px !important; margin:0;border: 0">
+					<div class="container-fluid">
+						<div class="navbar-header">
+						  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+							<span class="icon-bar"></span>
+						  </button>
+						  <a class="navbar-brand" href="http://localhost:8000/login/">KIA-Management System</a>
+						</div>
+						<div class="collapse navbar-collapse" id="myNavbar">
+							<ul class="nav navbar-nav">
+								<li class="active"><a href="http://localhost:8000/login/">Home</a></li>
+								<li><a href="http://localhost:8000/aboutus">About Us</a></li>
+								<li><a href="http://localhost:8000/booking">Booking </a></li>
+								<li><a href="http://localhost:8000/webcheckin">Web checkin</a></li>
+								<li><a href="http://localhost:8000/contactus">Contact Us</a></li>
+									
+							</ul>
+
+							{% if loggedin %}
+
+							
+							
+							<ul class="nav navbar-nav navbar-right">
+								
+								<li><a href="http://localhost:8000/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+								
+							
+							</ul>
+							
+							<ul class="nav navbar-nav navbar-right">
+								
+								<li><a ><span class="glyphicon glyphicon-user"></span>  Hello , {{ name }}</a></li>
+							</ul>
+						
+							{% else %}
+							<ul class="nav navbar-nav navbar-right">
+								
+								<li><a href="#myModal" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-log-in"></span> Passenger Login</a></li>
+							</ul>
+
+							<!--ul class="nav navbar-nav navbar-right">
+								<li><a href="#myModals" data-toggle="modal" data-target="#myModals"><span class="glyphicon glyphicon-log-in"></span> staff Login</a></li>
+							</ul-->
+                   <div class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+								<a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user"></span>
+									Staff Corner <span class="caret"></span></a>
+								<ul class="dropdown-menu"  ><!--style="padding: 1rem 2rem 1rem 2rem; text-align: left;"-->
+									
+										
+									<li><a href="#myModals" data-toggle="modal" data-target="#myModals"><span class="glyphicon glyphicon-log-in"></span> Staff Login</a></li>
+
+									<li><a href="#myModalss" data-toggle="modal" data-target="#myModalss"><span class="glyphicon glyphicon-log-in"></span> Security Login</a></li>
+
+									<!--li><a href="#"><b>Hello ,{{ sname }}</b></a></li-->
+									<!--hr-->
+									<!--li><a href="#">View Profile</a></li-->
+									
+								</ul>
+						</li>
+
+                    </div>							
+							{% endif %}
+
+							<form class="navbar-form navbar-right">
+							  <div class="input-group">
+							    <input type="text" class="form-control" placeholder="Search">
+							    <div class="input-group-btn">
+							      <button class="btn btn-default" type="submit">
+							        <i class="glyphicon glyphicon-search"></i>
+							      </button>
+							    </div>
+							  </div>
+							</form>
+						</div>
+					</div>
+
+					<div id="myCarousel" class="carousel slide" data-ride="carousel" >
+						<ol class="carousel-indicators">
+							  <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+							  <li data-target="#myCarousel" data-slide-to="1"></li>
+							  <li data-target="#myCarousel" data-slide-to="2"></li>
+							  <li data-target="#myCarousel" data-slide-to="3"></li>
+						</ol>
+						<div class="carousel-inner img-responsive" style="max-height: 620px" >
+							<div class="item active">
+								{% load static %}
+								<img src="{% static 'plane.jpg' %}">
+								<div class="carousel-caption">
+									<p>Welcome to</p>
+									<hr style="width:40%">
+									<h2>KIA-Management System</h2>
+								</div>
+							</div>
+							  <div class="item">
+								{% load static %}
+								<img src="{% static 'plane.jpg' %}">
+								<div class="carousel-caption">
+									<p>Come fly with us!</p>
+									<hr style="width:40%">
+									<h2>Book your flight</h2>
+								</div>
+							  </div>
+							  <div class="item">
+								{% load static %}
+								<img src="{% static 'plane.jpg' %}">
+								<div class="carousel-caption">
+									<p>Why choose us!</p>
+									<hr style="width:40%">
+									<h2>Luxurious & Safest</h2>
+								</div>
+							  </div>
+							  <div class="item">
+								{% load static %}
+								<img src="{% static 'plane.jpg' %}">
+								<div class="carousel-caption">
+									<p>Have any question?</p>
+									<hr style="width:40%">
+									<h2>Contact Us</h2>
+								</div>
+							  </div>
+						</div>
+					</div>
+				</nav>
+				<div class="row" style="padding: 5rem ;margin: 0; text-align: center;">
+			    	<div class="col-sm-4">
+			       		<div class="thumbnail" href="booking.html">
+				          		<img src="{% static 'pp.jpg' %}" style="width:100%">
+			      		</div>
+			      	</div>
+			    	<div class="col-md-4">
+			      		<div class="thumbnail" href="contactus.html">
+				          		<img src="{% static 'blr.jpg' %}" style="width:100%">
+			      		</div>
+			    	</div>
+			    	<div class="col-md-4">
+			      		<div class="thumbnail" href="aboutus.html">
+				          		<img src="{% static 'port.jpg' %}" style="width:100%">
+			      		</div>
+			    	</div>
+				</div>
+				<div class="background-wrapper" style="background-image: url(images/airline/b.jpg);">
+			  		<div style="text-align: center; padding: 10rem; color:white">
+			      		<h3>Come fly high with us</h3>
+			      		<hr width="30%" align="center">
+			      		<h1>Welcome to KIA-Management System</h1>
+			    	</div>
+				</div>
+
+					<footer id="footer">
+						<div class="container-fluid">
+							<ul class="icons">
+								<li><a href="#" class="fa fa-twitter" style="color: grey"></a></li>
+								<li><a href="#" class="fa fa-facebook" style="color: grey"></a></li>
+								<li><a href="#" class="fa fa-instagram" style="color: grey"></a></li>
+								<li><a href="#" class="fa fa-envelope" style="color: grey"></a></li>
+							</ul>
+						</div>
+						<div class="copyright">
+							&copy;KIA-Management System. All rights reserved.
+							
+						</div>
+					
+					
+<!--staff login-->
+
+			<form action="http://localhost:8000/staff_login/" method="post">
+				{% csrf_token %}
+
+			<div class="modal fade" id="myModals" role="dialog" style="padding: 10rem">
+			    <div class="modal-dialog">
+				    <div class="modal-content trans-input-area">
+				        <div class="modal-header">
+				          <button type="button" class="close" data-dismiss="modal">&times;</button>
+				          <h4 class="modal-title" style="text-align:center;"> STAFF LOGIN </h4>
+				        </div>
+				        <div class="modal-body form-group trans-input-area">
+				        	<label><b>Email</b></label>
+				      		<input type="text" class="form-control" placeholder="example@email.com" name="semail" required>
+				      		<br>
+				      		<label><b>Password</b></label>
+				      		<input type="password" class="form-control" placeholder="Enter Password" name="spsw" required>
+				        	<br>
+				      		<button class="btn btn-block form-control" type="submit" style="background-color: grey; color: white"><a><b>Login</b></a></button-->
+								  </div>
+								  <!--div class="modal-footer">
+									<button type="button" class="btn btn-block"  style="background-color: rgb(182, 122, 227)">CLICK HEeeeRE TO LOGIN</button>
+								</div-->
+								{% if sf %}
+								<h5 class="modal-title" style="text-align:center;">{{ sf }}</h5>
+								<br>
+								{% endif %}
+				    </div>
+			    </div>
+			</div>
+
+
+<!--passenger login-->
+
+		</form>
+			<div class="modal fade" id="myModal" role="dialog" style="padding: 10rem">
+			    <div class="modal-dialog">
+				    <div class="modal-content trans-input-area">
+				        <div class="modal-header">
+				          <button type="button" class="close" data-dismiss="modal">&times;</button>
+				          <h4 class="modal-title" style="text-align:center;">PASSENGER LOGIN</h4>
+						 
+
+				        </div>
+						<form action="http://localhost:8000/login/" method="post" >
+							{% csrf_token %}
+							{% load static %}
+				        <div class="modal-body form-group trans-input-area">
+				        	<label><b>Email</b></label>
+				      		<input type="text" class="form-control" placeholder="example@email.com" name="lemail" required>
+				      		<br>
+				      		<label><b>Password</b></label>
+				      		<input type="password" class="form-control" placeholder="Enter Password" name="lpsw" required>
+				        	<br>
+				      		<button class="btn btn-block form-control" type="submit" style="background-color: grey; color: white"><a href="home.html"><b>Login</b></a></button>
+							  <br>
+									<label><b>Dont have account register ?</b></label>
+                             <br>
+							
+							<div class="modal-footer">
+								<a href="http://localhost:8000/signup/"><button type="button" class="btn btn-block"  style="background-color: rgb(205, 149, 195)">CLICK HERE TO SIGNUP</button></a>
+								
+							</div>
+							{% if msg %}
+								<h5 class="modal-title" style="text-align:center;">{{ msg }}</h5>
+								<br>
+								{% endif %}
+						</div>	
+					</div>
+				</div>
+			</div>	
+		</form>	
+			
+<!--security login-->
+
+			<form action="http://localhost:8000/security_login" method="post">
+				{% csrf_token %}
+
+			<div class="modal fade" id="myModalss" role="dialog" style="padding: 10rem">
+			    <div class="modal-dialog">
+				    <div class="modal-content trans-input-area">
+				        <div class="modal-header">
+				          <button type="button" class="close" data-dismiss="modal">&times;</button>
+				          <h4 class="modal-title" style="text-align:center;"> SECURITY LOGIN </h4>
+				        </div>
+				        <div class="modal-body form-group trans-input-area">
+				        	<label><b>Email</b></label>
+				      		<input type="text" class="form-control" placeholder="example@email.com" name="secemail" required>
+				      		<br>
+				      		<label><b>Password</b></label>
+				      		<input type="password" class="form-control" placeholder="Enter Password" name="secpsw" required>
+				        	<br>
+				      		<button class="btn btn-block form-control" type="submit" style="background-color: grey; color: white"><a><b>Login</b></a></button-->
+								  </div>
+								  <!--div class="modal-footer">
+									<button type="button" class="btn btn-block"  style="background-color: rgb(182, 122, 227)">CLICK security TO LOGIN</button>
+								</div-->
+								{% if secf %}
+								<h5 class="modal-title" style="text-align:center;">{{ secf }}</h5>
+								<br>
+								{% endif %}
+				    </div>
+			    </div>
+			</div>
+			</form>
+
+
+									<!--form action="#" method="post">
+										{% csrf_token %}
+										{% load static %}
+
+									<div class="register">
+										<label><b>First name</b></label>
+ 									 <input type="text" class="form-control" placeholder="Enter First name" name="rfname" required>
+									 <label><b>Last name</b></label>
+									 <input type="text" class="form-control" placeholder="Enter Last name" name="rlname" required>
+
+									 <label><b>Email</b></label>
+									 <input type="text" class="form-control" placeholder="example@email.com" name="remail" required>
+
+									 <label><b>Password</b></label>
+									 <input type="password" class="form-control" placeholder="Enter Password" name="rpsw" required>
+									 <label><b> confirm Password</b></label>
+									<input type="password" class="form-control" placeholder="Confirm Password" name="rcpsw" required>
+<br>
+									 <button class="btn btn-block form-control" type="submit" style="background-color: grey; color: white"><a href="home.html"><b>Register</b></a></button>
+
+				        </div>
+
+								  </div>
+
+
+
+
+
+				        <div class="modal-footer">
+				         	 <button type="button" class="btn btn-block" data-dismiss="modal" style="background-color: grey;"><b>Cancel</b></button>
+				        </div>
+				    </div>
+			    </div>
+			</div>
+			    </form-->
+			</footer>
+	</body>
+</html>
