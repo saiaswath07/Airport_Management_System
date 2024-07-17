@@ -2,7 +2,7 @@
 Airport Management System  using html,css,javascript,Django and oracle 11g as database 
 
 
-Airports have become one of the most trafficked places by passengers. There are many operations to be handled by passengers and airport staff once we enter the airport. So, we need a system to handle such a vast number of passengers, flights, security, and staff in the airport. In this project, we going to maintain the details of passengers, security staff, and flight staff in an airport and the information about the personal details of the passengers and their bookings. The passengers can download their flight tickets and can check their other flight details. The details of the security staff and the flight staff for each flight are also stored they can log in and perform their respective work such as checking in passengers . 
+Airports have become one of the most trafficked places by passengers. There are many operations to be handled by passengers and airport staff once we enter the airport. So, we need a system to handle such a vast number of passengers, flights, security, and staff in the airport. In this project, we going to maintain the details of passengers, security staff, and flight staff in an airport and the information about the personal details of the passengers and their bookings. The passengers can download their flight tickets and can check their other flight details. The details of the security staff and the flight staff for each flight are also stored they can log in and perform their respective work such as checking in passengers. 
 
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
